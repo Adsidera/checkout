@@ -10,7 +10,7 @@ RSpec.describe CashCalculator do
     context 'with more than 1 green tea' do
       let(:products) { %w[GR1 GR1] }
 
-      it 'calculates total price of order items' do
+      it 'calculates total price applying a buy-one-get-one-free discount' do
         expect(calculator.total).to eq 3.11
       end
     end
