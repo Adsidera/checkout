@@ -11,7 +11,7 @@ class CashCalculator
   }
 
   DISCOUNTS = {
-    'GR1' => { quantity: 2, discounted_quantity: 1}
+    'GR1' => { minimum_quantity: 2, discounted_quantity: 1}
   }
 
   def initialize(order)
@@ -22,7 +22,11 @@ class CashCalculator
   def total
     subtotal = []
     @order.uniq.each do |item|
-      subtotal << PRODUCTS[item].price * @quantities[item]
+      if @quantities[item] >= DISCOUNTS[item][:minimum_quantity]
+        subtotal << PRODUCTS[item].price * (@quantities[item] - DISCOUNTS[item][:discounted_quantity].to_i)
+      else
+        subtotal << PRODUCTS[item].price * @quantities[item]
+      end
     end
     (subtotal.sum.to_f / 100).round(2)
   end
