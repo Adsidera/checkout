@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'pry'
 class CashCalculator
   Product = Struct.new(:product_code, :name, :price, :discount)
 
@@ -14,6 +15,10 @@ class CashCalculator
   end
 
   def total
-
+    subtotal = []
+    @order.uniq.each do |item|
+      subtotal << PRODUCTS[item].price * @quantities[item]
+    end
+    (subtotal.sum.to_f / 100).round(2)
   end
 end
