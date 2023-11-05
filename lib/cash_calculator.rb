@@ -13,6 +13,7 @@ class CashCalculator
   DISCOUNTS = {
     'GR1' => { minimum_quantity: 2, discounted_quantity: 1},
     'SR1' => { minimum_quantity: 3, discounted_price: 450},
+    'CF1' => { minimum_quantity: 3, discounted_price: 748.67}
   }
 
   def initialize(order)
