@@ -22,4 +22,5 @@ RSpec.describe CashCalculator do
     # context 'with more than 3 coffees' do
 
     # end
+  end
 end

@@ -8,10 +8,12 @@ class CashCalculator
     'SR1' => Product.new('SR1','strawberries', 500),
     'CF1' => Product.new('CF1','coffee', 1123),
   }
-  def initialize(products)
-    @products = products
+  def initialize(order)
+    @order = order
+    @quantities = order.group_by(&:itself).transform_values(&:count) # e.g.: {'SR1' => 2}
   end
 
   def total
+
   end
 end
