@@ -25,8 +25,14 @@ RSpec.describe CashCalculator do
       end
     end
 
-    # context 'with more than 3 coffees' do
+    context 'with 3 or more coffees' do
+      let(:order) do
+        %w[GR1 CF1 SR1 CF1 CF1]
+      end
 
-    # end
+      it 'applies 2/3 discount on coffee price' do
+        expect(calculator.total).to eq 30.57
+      end
+    end
   end
 end
