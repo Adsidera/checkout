@@ -6,7 +6,6 @@ RSpec.describe CashCalculator do
   subject(:calculator) { described_class.new(order) }
 
   describe '#total' do
-
     context 'with more than 1 green tea' do
       let(:order) { %w[GR1 GR1] }
 
@@ -32,6 +31,16 @@ RSpec.describe CashCalculator do
 
       it 'applies 2/3 discount on coffee price' do
         expect(calculator.total).to eq 30.57
+      end
+    end
+  end
+
+  describe 'errors' do
+    context 'when order includes a not registered product' do
+      let(:order) { %w[GR1 AF1] }
+
+      it 'does not calculate the not registered product' do
+        expect(calculator.total).to eq 3.11
       end
     end
   end

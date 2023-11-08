@@ -17,8 +17,8 @@ class CashCalculator
   }.freeze
 
   def initialize(order)
-    @order = order
-    @quantities = order.group_by(&:itself).transform_values(&:count) # e.g.: {'SR1' => 2}
+    @order = order.delete_if { |item| PRODUCTS[item].nil? }
+    @quantities = @order.group_by(&:itself).transform_values(&:count) # e.g.: {'SR1' => 2, 'GR1' => 1}
     @subtotal = []
   end
 
