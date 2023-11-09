@@ -1,7 +1,7 @@
 # A CLI Checkout
 
 ## Getting started
-Just `bundle install`.
+Clone this repo and just `bundle install`.
 
 ## How to use it
 Open a terminal in the root directory of the project and run the Ruby script `checkout.rb` with any combination of
